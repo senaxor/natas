@@ -8,3 +8,7 @@ hexedit F2 save and ctrl+x exit
 
 grep -i -r a dics   
 LIKE binary
+
+ipython
+
+burp --> sequencer and decoder and intru..
