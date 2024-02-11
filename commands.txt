@@ -1,0 +1,10 @@
+feh pic --> shows picture 
+
+convert pic -resize 10x10 dest
+
+magic number to spoof file type
+
+hexedit F2 save and ctrl+x exit
+
+grep -i -r a dics   
+LIKE binary
