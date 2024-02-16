@@ -4,7 +4,8 @@ require 'net/http'
 require 'uri'
 require 'colorize'
 
-password_18 = "8NEDUUxg8kFgPV84uLwvZk"
+password_18_founded = "8NEDUUxg8kFgPV84uLwvZk"
+password_18=""
 test_loop = "just for detect random timeout and incorrent chars added"
 chars = ('a'..'z').to_a + ('A'..'Z').to_a + ('0'..'9').to_a
 uri = URI.parse("http://natas17.natas.labs.overthewire.org/")
